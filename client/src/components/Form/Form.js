@@ -37,7 +37,7 @@ function Form({ currentId, setCurrentId }) {
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} a Memory</Typography>
+                <Typography variant="h6">{currentId ? 'Editing' : 'Sharing'} a Photo</Typography>
                 <TextField 
                     name="creator" 
                     variant="outlined" 
