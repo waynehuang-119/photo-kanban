@@ -21,6 +21,19 @@ app.get('/', (req, res) => {
     res.send('APP IS RUNNING.');
 })
 
+// // Server static assets if in production
+if (process.env.NODE_ENV === "production") {
+    console.log("Running server in production mode");
+    // Set static folder
+    app.use(express.static(path.resolve(__dirname, "build")));
+    app.use(express.static(path.join(__dirname, "build"), { dotfiles: "allow" }));
+    app.get("*", (req, res) => {
+      res.sendFile(
+        path.resolve(__dirname, "build", "index.html")
+      );
+    });
+}
+
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
 const PORT = process.env.PORT || 4000;
