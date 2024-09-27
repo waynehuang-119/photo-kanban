@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://photo-kanban-server-672kjrumj-waynehuang-119s-projects.vercel.app/posts';
+const url = 'https://photo-kanban-server-a4mcctjiv-waynehuang-119s-projects.vercel.app/posts';
 
 export const fetchPosts = () => axios.get(url);
 export const createPost = (newPost) => axios.post(url, newPost);
