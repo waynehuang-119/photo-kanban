@@ -3,8 +3,14 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import postRoutes from './routes/posts.js';
+
+// Get the directory name of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 
@@ -17,16 +23,16 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
-app.get('/', (req, res) => {
-    res.send('APP IS RUNNING.');
-})
+// app.get('/', (req, res) => {
+//     res.send('APP IS RUNNING.');
+// })
 
 // // Server static assets if in production
 if (process.env.NODE_ENV === "production") {
     console.log("Running server in production mode");
     // Set static folder
     app.use(express.static(path.resolve(__dirname, "build")));
-    app.use(express.static(path.join(__dirname, "build"), { dotfiles: "allow" }));
+    // app.use(express.static(path.join(__dirname, "build"), { dotfiles: "allow" }));
     app.get("*", (req, res) => {
       res.sendFile(
         path.resolve(__dirname, "build", "index.html")
