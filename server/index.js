@@ -23,22 +23,22 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
-// app.get('/', (req, res) => {
-//     res.send('APP IS RUNNING.');
-// })
+app.get('/', (req, res) => {
+    res.send('SERVER IS RUNNING.');
+})
 
-// // Server static assets if in production
-if (process.env.NODE_ENV === "production") {
-    console.log("Running server in production mode");
-    // Set static folder
-    app.use(express.static(path.resolve(__dirname, "build")));
-    // app.use(express.static(path.join(__dirname, "build"), { dotfiles: "allow" }));
-    app.get("*", (req, res) => {
-      res.sendFile(
-        path.resolve(__dirname, "build", "index.html")
-      );
-    });
-}
+// // // Server static assets if in production
+// if (process.env.NODE_ENV === "production") {
+//     console.log("Running server in production mode");
+//     // Set static folder
+//     app.use(express.static(path.resolve(__dirname, "build")));
+//     // app.use(express.static(path.join(__dirname, "build"), { dotfiles: "allow" }));
+//     app.get("*", (req, res) => {
+//       res.sendFile(
+//         path.resolve(__dirname, "build", "index.html")
+//       );
+//     });
+// }
 
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
